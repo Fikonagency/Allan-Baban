@@ -46,11 +46,20 @@ a { color: inherit; text-decoration: none; }
 .section__title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  margin-bottom: 3rem;
-  max-width: 22ch;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin-bottom: 3.5rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 1.25rem;
+}
+.section__title::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 48px; height: 1px;
+  background: var(--accent);
 }
 
 /* === NAV === */
@@ -115,35 +124,34 @@ a { color: inherit; text-decoration: none; }
 .hero__bg {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
-  transform: scale(1.08);
-  filter: grayscale(0.5) contrast(1.05) brightness(0.45);
-  opacity: 0.35;
+  transform: scale(1.06);
+  filter: grayscale(0.4) contrast(1.05) brightness(0.4);
+  opacity: 0.45;
 }
 .hero__steel {
   position: absolute;
-  right: -8%;
+  right: -10%;
   top: 50%;
   transform: translateY(-50%);
-  width: 75%;
-  height: 75%;
+  width: 78%;
+  height: 80%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center right;
-  opacity: 0.55;
+  opacity: 0.4;
   mix-blend-mode: screen;
   pointer-events: none;
-  filter: drop-shadow(0 0 30px rgba(201,163,90,0.15));
-  animation: heroSteelFloat 12s ease-in-out infinite;
+  animation: heroSteelFloat 14s ease-in-out infinite;
 }
 @keyframes heroSteelFloat {
   0%, 100% { transform: translateY(-50%) scale(1); }
-  50% { transform: translateY(-52%) scale(1.02); }
+  50% { transform: translateY(-51.5%) scale(1.015); }
 }
 .hero__overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(90deg, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.7) 40%, rgba(10,10,12,0.3) 70%, rgba(10,10,12,0.85) 100%),
-    linear-gradient(180deg, rgba(10,10,12,0.5) 0%, rgba(10,10,12,0.4) 50%, rgba(10,10,12,0.95) 100%);
+    linear-gradient(90deg, rgba(10,10,12,0.92) 0%, rgba(10,10,12,0.65) 35%, rgba(10,10,12,0.2) 65%, rgba(10,10,12,0.7) 100%),
+    linear-gradient(180deg, rgba(10,10,12,0.4) 0%, rgba(10,10,12,0.3) 50%, rgba(10,10,12,0.95) 100%);
 }
 .hero__content {
   position: relative; z-index: 2;
@@ -350,28 +358,23 @@ a { color: inherit; text-decoration: none; }
 }
 .project:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
 .project__head {
-  display: flex; align-items: flex-start; gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  max-width: 24ch;
 }
-.project__num {
-  font-family: var(--serif);
-  font-size: 3rem;
+.project__tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
   color: var(--accent);
-  line-height: 1;
-  font-weight: 300;
+  margin-bottom: 0.85rem;
+  font-weight: 500;
 }
 .project__title {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
-}
-.project__tag {
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
 }
 .project__body { max-width: 70ch; margin-bottom: 2.5rem; }
 .project__desc { color: var(--text-dim); margin-bottom: 1.75rem; }
@@ -459,11 +462,11 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-4px);
   background: var(--bg-3);
 }
-.interest__num {
-  font-family: var(--serif);
-  font-size: 0.9rem;
-  color: var(--accent);
-  letter-spacing: 0.2em;
+.interest::before {
+  content: '';
+  display: block;
+  width: 24px; height: 1px;
+  background: var(--accent);
   margin-bottom: 1.5rem;
 }
 .interest h3 {
@@ -496,11 +499,20 @@ a { color: inherit; text-decoration: none; }
 .contact__title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  margin-bottom: 4rem;
-  max-width: 18ch;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin-bottom: 3.5rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 1.25rem;
+}
+.contact__title::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 48px; height: 1px;
+  background: var(--accent);
 }
 .contact__grid {
   display: grid;
@@ -552,6 +564,30 @@ a.contact__card:hover { background: rgba(201,163,90,0.1); }
 .reveal-up.in:nth-child(3) { transition-delay: 0.16s; }
 .reveal-up.in:nth-child(4) { transition-delay: 0.24s; }
 
+/* Slide-in from sides */
+.slide-in-left, .slide-in-right {
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.2, 0.7, 0.2, 1), transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform, opacity;
+}
+.slide-in-left { transform: translateX(-50px); }
+.slide-in-right { transform: translateX(50px); }
+.slide-in-left.in, .slide-in-right.in { opacity: 1; transform: translateX(0); }
+
+/* Scroll-driven word reveal */
+[data-words] .w {
+  display: inline-block;
+  opacity: 0.18;
+  filter: blur(2px);
+  transition: opacity 0.45s ease, filter 0.45s ease;
+  will-change: opacity, filter;
+}
+[data-words] .w.lit,
+[data-words].done .w {
+  opacity: 1;
+  filter: blur(0);
+}
+
 /* Hero reveals fire on load */
 .hero .reveal, .hero .reveal-word { transition-delay: 0s; }
 .hero.loaded .hero__eyebrow { animation: fadeUp 1s 0.2s forwards; }
@@ -579,8 +615,6 @@ a.contact__card:hover { background: rgba(201,163,90,0.1); }
   .nav__menu.open { transform: translateX(0); }
   .nav__menu a { color: var(--text); }
   .nav__toggle { display: flex; z-index: 60; }
-  .project__head { flex-direction: column; gap: 1rem; }
-  .project__num { font-size: 2rem; }
   .project__media--2col { grid-template-columns: 1fr; }
   .project__media figure.span-2 { grid-column: auto; }
 }
@@ -653,5 +687,6 @@ a.contact__card:hover { background: rgba(201,163,90,0.1); }
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal, .reveal-up, .reveal-word { opacity: 1; transform: none; }
+  .reveal, .reveal-up, .reveal-word, .slide-in-left, .slide-in-right { opacity: 1; transform: none; }
+  [data-words] .w { opacity: 1; filter: none; }
 }
