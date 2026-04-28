@@ -42,6 +42,40 @@
   const hero = document.querySelector('.hero');
   if (hero) requestAnimationFrame(() => hero.classList.add('loaded'));
 
+  // Lightbox for project drawings
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('.lightbox__img');
+  const closeBtn = lightbox.querySelector('.lightbox__close');
+  const openLightbox = (src, alt) => {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    setTimeout(() => { lightboxImg.src = ''; }, 300);
+  };
+  document.querySelectorAll('.project__media figure').forEach((fig) => {
+    fig.setAttribute('tabindex', '0');
+    fig.setAttribute('role', 'button');
+    const img = fig.querySelector('img');
+    const trigger = () => openLightbox(img.src, img.alt);
+    fig.addEventListener('click', trigger);
+    fig.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger(); }
+    });
+  });
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target === closeBtn) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
+
   // Year
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();

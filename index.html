@@ -29,6 +29,7 @@
 
 <section class="hero" id="top">
   <div class="hero__bg" style="background-image:url('images/hero.jpg')"></div>
+  <div class="hero__steel" style="background-image:url('images/hero-steel.jpg')" aria-hidden="true"></div>
   <div class="hero__overlay"></div>
   <div class="hero__content">
     <p class="hero__eyebrow reveal">Portfolio · 2026</p>
@@ -104,14 +105,24 @@
     <p class="eyebrow reveal-up">03 — Kompetenser</p>
     <h2 class="section__title reveal-up">Verktyg jag arbetar med.</h2>
     <div class="skills__grid">
-      <div class="skill reveal-up"><img src="images/logo-tekla.png" alt="" loading="lazy" /><span>Tekla Structures</span></div>
-      <div class="skill reveal-up"><img src="images/logo-revit.webp" alt="" loading="lazy" /><span>Autodesk Revit</span></div>
-      <div class="skill reveal-up"><div class="skill__mark">A</div><span>AutoCAD</span></div>
-      <div class="skill reveal-up"><div class="skill__mark">N</div><span>Navisworks</span></div>
-      <div class="skill reveal-up"><div class="skill__mark">B</div><span>BIM Samordning</span></div>
-      <div class="skill reveal-up"><div class="skill__mark">K</div><span>Konstruktionsritning</span></div>
-      <div class="skill reveal-up"><div class="skill__mark">L</div><span>Lastberäkningar</span></div>
-      <div class="skill reveal-up"><div class="skill__mark">H</div><span>Hållbart Byggande</span></div>
+      <div class="skill-group reveal-up">
+        <p class="skill-group__label">Programvara</p>
+        <ul class="skill-list">
+          <li><span class="skill-list__name">Tekla Structures</span><span class="skill-list__meta">3D-modellering · konstruktionsritning</span></li>
+          <li><span class="skill-list__name">Autodesk Revit</span><span class="skill-list__meta">BIM · arkitekturritning</span></li>
+          <li><span class="skill-list__name">AutoCAD</span><span class="skill-list__meta">2D-ritning · detaljering</span></li>
+          <li><span class="skill-list__name">Navisworks</span><span class="skill-list__meta">Modellsamordning · kollisionskontroll</span></li>
+        </ul>
+      </div>
+      <div class="skill-group reveal-up">
+        <p class="skill-group__label">Disciplin</p>
+        <ul class="skill-list">
+          <li><span class="skill-list__name">Konstruktionsritning</span><span class="skill-list__meta">GA · K-ritningar · sektioner</span></li>
+          <li><span class="skill-list__name">Lastberäkningar</span><span class="skill-list__meta">Dimensionering · förbandskontroll</span></li>
+          <li><span class="skill-list__name">BIM-samordning</span><span class="skill-list__meta">Modellbaserat arbetsflöde</span></li>
+          <li><span class="skill-list__name">Hållbart byggande</span><span class="skill-list__meta">Materialval · livscykel</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -250,6 +261,11 @@
     <p class="contact__sign reveal-up">© <span id="year"></span> Allan Baban</p>
   </div>
 </footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Förstora ritning">
+  <button class="lightbox__close" aria-label="Stäng">×</button>
+  <img class="lightbox__img" alt="" />
+</div>
 
 <script src="script.js"></script>
 </body>
