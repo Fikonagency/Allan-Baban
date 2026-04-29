@@ -144,13 +144,13 @@
   scrollies.forEach((sc) => {
     const stages = parseInt(sc.dataset.stages || '4', 10);
     sc.style.setProperty('--stages', stages);
-    // Set first stage active immediately so something paints before scroll
     const firstFig = sc.querySelector('.scrolly__fig[data-stage="0"]');
     const firstPanel = sc.querySelector('.scrolly__panel[data-stage="0"]');
     const firstStep = sc.querySelector('.scrolly__progress-step[data-stage="0"]');
     if (firstFig) firstFig.classList.add('is-active');
     if (firstPanel) firstPanel.classList.add('is-active');
     if (firstStep) firstStep.classList.add('is-active');
+    sc.dataset.activeStage = '0';
   });
 
   if (!reduced && scrollies.length) {
@@ -161,16 +161,16 @@
         const rect = sc.getBoundingClientRect();
         const total = sc.offsetHeight - vh;
         if (total <= 0) return;
-        // progress 0..1 across the entire scrolly's scroll range
         const raw = -rect.top / total;
         const progress = Math.max(0, Math.min(0.9999, raw));
         const stages = parseInt(sc.dataset.stages || '4', 10);
-        const idx = Math.min(stages - 1, Math.floor(progress * stages));
+        const stageFloat = progress * stages;
+        const idx = Math.min(stages - 1, Math.floor(stageFloat));
+        const stageProgress = Math.max(0, Math.min(1, stageFloat - idx));
 
         const figs = sc.querySelectorAll('.scrolly__fig');
         const panels = sc.querySelectorAll('.scrolly__panel');
         const steps = sc.querySelectorAll('.scrolly__progress-step');
-
         const apply = (nodes) => {
           nodes.forEach((n, i) => {
             n.classList.toggle('is-active', i === idx);
@@ -180,6 +180,38 @@
         apply(figs);
         apply(panels);
         apply(steps);
+        sc.dataset.activeStage = String(idx);
+
+        // Project-specific scroll-driven effects
+        if (sc.classList.contains('scrolly--p1')) {
+          // Stage 0: draw the section image left-to-right (0 -> 1 across stage)
+          const draw = idx === 0 ? Math.min(1, stageProgress * 1.1) : 1;
+          const main = sc.querySelector('.p1-main__img');
+          if (main) main.style.setProperty('--p1-draw', draw.toFixed(3));
+          // Insets visible per stage
+          const insets = sc.querySelectorAll('.p1-inset');
+          insets.forEach((el) => {
+            const s = parseInt(el.dataset.stage, 10);
+            el.classList.toggle('is-visible', idx >= s);
+          });
+        }
+
+        if (sc.classList.contains('scrolly--p3')) {
+          // Stage 0: 3D rotate over 360° as you scroll the stage
+          const rot = idx === 0 ? stageProgress * 360 : (idx > 0 ? 360 : 0);
+          const rotImg = sc.querySelector('.p3-rotate__img');
+          if (rotImg) rotImg.style.setProperty('--p3-rot', rot.toFixed(1) + 'deg');
+          // Stage 1 & 2: draw plans
+          const drawFigs = sc.querySelectorAll('.p3-fig--draw');
+          drawFigs.forEach((el) => {
+            const s = parseInt(el.dataset.stage, 10);
+            let draw;
+            if (idx < s) draw = 0;
+            else if (idx > s) draw = 1;
+            else draw = Math.min(1, stageProgress * 1.05);
+            el.style.setProperty('--p3-draw', draw.toFixed(3));
+          });
+        }
       });
       scTicking = false;
     };
@@ -189,9 +221,62 @@
     window.addEventListener('resize', updateScrollies);
     updateScrollies();
   } else if (reduced) {
-    // Show every panel/figure stacked when motion is reduced
     scrollies.forEach((sc) => {
       sc.querySelectorAll('.scrolly__fig, .scrolly__panel').forEach((n) => n.classList.add('is-active'));
+      sc.querySelectorAll('.p1-inset').forEach((n) => n.classList.add('is-visible'));
     });
+  }
+
+  // === Background blueprint scroll-driven drawing ===
+  const bp = document.getElementById('bp-bg');
+  if (bp && !reduced) {
+    const bpLines = Array.from(bp.querySelectorAll('.bp-line'));
+    bpLines.forEach((p) => {
+      try {
+        const len = p.getTotalLength();
+        p.style.setProperty('--len', len.toFixed(1));
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = len;
+      } catch (e) {}
+    });
+    const aboutEl = document.getElementById('about');
+    const skillsEl = document.getElementById('skills');
+    let bpTicking = false;
+    const updateBP = () => {
+      if (aboutEl && skillsEl) {
+        const aboutTop = aboutEl.getBoundingClientRect().top + window.scrollY;
+        const skillsBottom = skillsEl.getBoundingClientRect().bottom + window.scrollY;
+        const total = skillsBottom - aboutTop;
+        const y = window.scrollY + window.innerHeight * 0.5;
+        const p = Math.max(0, Math.min(1, (y - aboutTop) / total));
+        const inRange = y >= aboutTop - window.innerHeight * 0.3 && y <= skillsBottom + window.innerHeight * 0.1;
+        bp.classList.toggle('bp-active', inRange);
+        // Distribute drawing across all lines
+        bpLines.forEach((line, i) => {
+          const start = i / bpLines.length;
+          const end = (i + 1) / bpLines.length;
+          const lp = Math.max(0, Math.min(1, (p - start) / (end - start)));
+          const len = parseFloat(line.style.getPropertyValue('--len') || '1000');
+          line.style.strokeDashoffset = (len * (1 - lp)).toFixed(1);
+        });
+      }
+      bpTicking = false;
+    };
+    document.addEventListener('scroll', () => {
+      if (!bpTicking) { requestAnimationFrame(updateBP); bpTicking = true; }
+    }, { passive: true });
+    window.addEventListener('resize', updateBP);
+    updateBP();
+  }
+
+  // === Projects intro burst — observe and toggle ===
+  const introEl = document.getElementById('projects-intro');
+  if (introEl) {
+    const introIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) introEl.classList.add('in');
+      });
+    }, { threshold: 0.35 });
+    introIO.observe(introEl);
   }
 })();

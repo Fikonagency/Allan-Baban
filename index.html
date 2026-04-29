@@ -8,9 +8,59 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=4" />
+<link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
+
+<!-- Background 3D blueprint that draws across About → Experience → Skills -->
+<div class="bp-bg" id="bp-bg" aria-hidden="true">
+  <svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <pattern id="bpgrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+        <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(201,163,90,0.06)" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="1600" height="1000" fill="url(#bpgrid)"/>
+    <g class="bp-frame" stroke="rgba(201,163,90,0.55)" stroke-width="1.2" fill="none" stroke-linecap="round">
+      <!-- isometric building wireframe (ground rect) -->
+      <path class="bp-line" d="M 360 720 L 1240 720"/>
+      <path class="bp-line" d="M 360 720 L 200 800"/>
+      <path class="bp-line" d="M 1240 720 L 1080 800"/>
+      <path class="bp-line" d="M 200 800 L 1080 800"/>
+      <!-- upright columns -->
+      <path class="bp-line" d="M 360 720 L 360 320"/>
+      <path class="bp-line" d="M 1240 720 L 1240 320"/>
+      <path class="bp-line" d="M 200 800 L 200 400"/>
+      <path class="bp-line" d="M 1080 800 L 1080 400"/>
+      <path class="bp-line" d="M 580 720 L 580 320"/>
+      <path class="bp-line" d="M 800 720 L 800 320"/>
+      <path class="bp-line" d="M 1020 720 L 1020 320"/>
+      <!-- upper rectangle (roof level) -->
+      <path class="bp-line" d="M 360 320 L 1240 320"/>
+      <path class="bp-line" d="M 360 320 L 200 400"/>
+      <path class="bp-line" d="M 1240 320 L 1080 400"/>
+      <path class="bp-line" d="M 200 400 L 1080 400"/>
+      <!-- diagonal bracing (X) -->
+      <path class="bp-line" d="M 360 720 L 580 320"/>
+      <path class="bp-line" d="M 580 720 L 360 320"/>
+      <path class="bp-line" d="M 800 720 L 1020 320"/>
+      <path class="bp-line" d="M 1020 720 L 800 320"/>
+      <!-- roof pitch -->
+      <path class="bp-line" d="M 360 320 L 800 200"/>
+      <path class="bp-line" d="M 1240 320 L 800 200"/>
+      <path class="bp-line" d="M 200 400 L 640 280"/>
+      <path class="bp-line" d="M 1080 400 L 640 280"/>
+      <path class="bp-line" d="M 800 200 L 640 280"/>
+      <!-- floor beams (intermediate level) -->
+      <path class="bp-line" d="M 360 540 L 1240 540"/>
+      <path class="bp-line" d="M 200 620 L 1080 620"/>
+      <path class="bp-line" d="M 360 540 L 200 620"/>
+      <path class="bp-line" d="M 1240 540 L 1080 620"/>
+      <!-- dimension ticks -->
+      <path class="bp-line" d="M 360 760 L 360 780 M 800 760 L 800 780 M 1240 760 L 1240 780 M 360 770 L 1240 770"/>
+    </g>
+  </svg>
+</div>
 
 <header class="nav" id="nav">
   <a href="#top" class="nav__brand">AB<span>.</span></a>
@@ -108,7 +158,9 @@
           <li><span class="skill-list__name">Tekla Structures</span><span class="skill-list__meta">3D-modellering · konstruktionsritning</span></li>
           <li><span class="skill-list__name">Autodesk Revit</span><span class="skill-list__meta">BIM · arkitekturritning</span></li>
           <li><span class="skill-list__name">AutoCAD</span><span class="skill-list__meta">2D-ritning · detaljering</span></li>
-          <li><span class="skill-list__name">Navisworks</span><span class="skill-list__meta">Modellsamordning · kollisionskontroll</span></li>
+          <li><span class="skill-list__name">Microsoft Excel</span><span class="skill-list__meta">Beräkning · kalkyl · uppföljning</span></li>
+          <li><span class="skill-list__name">Powerproject</span><span class="skill-list__meta">Tidplan · resursplanering</span></li>
+          <li><span class="skill-list__name">Bidcon</span><span class="skill-list__meta">Kalkyl · mängdberäkning</span></li>
         </ul>
       </div>
       <div class="skill-group slide-in-right">
@@ -124,26 +176,60 @@
   </div>
 </section>
 
+<!-- Eye-catching transition into projects -->
+<section class="projects-intro" id="projects-intro" aria-hidden="true">
+  <div class="projects-intro__inner">
+    <span class="projects-intro__eyebrow">Utvalda</span>
+    <h2 class="projects-intro__word"><span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>k</span><span>t</span></h2>
+    <p class="projects-intro__sub">Tre arbeten — ritning, modell, detalj.</p>
+  </div>
+</section>
+
 <section class="section projects" id="projects">
   <div class="container projects__intro">
     <h2 class="section__title reveal-up">Projekt</h2>
-    <p class="projects__lede reveal-up">Tre arbeten i Tekla och Revit. Scrolla — bilden står still medan berättelsen rör sig.</p>
+    <p class="projects__lede reveal-up">Scrolla — ritningarna ritas, detaljerna kopplas, bilderna växer fram.</p>
   </div>
 
-  <article class="scrolly" data-stages="4" aria-label="Stålstomme för Industribyggnad">
+  <!-- Project 1: Stålstomme — section drawing wipes in, then arrows reveal callouts to HEB280 cross-section, VKR bullets, and Detalj A -->
+  <article class="scrolly scrolly--p1" data-stages="4" aria-label="Stålstomme för Industribyggnad">
     <div class="scrolly__pin">
-      <div class="scrolly__visual">
-        <figure class="scrolly__fig" data-stage="0">
-          <img src="images/steel-iso.png" alt="Stålstomme — isometri" loading="lazy"/>
+      <div class="scrolly__visual scrolly__visual--p1">
+        <!-- Persistent main drawing (Bild w) — wipes in during stage 0, stays visible across stages -->
+        <div class="p1-main">
+          <img class="p1-main__img" src="images/p1-bild-w-section.png" alt="Stålstomme — sektion med HEB240, HEB280, VKR 250×10 och Detalj A"/>
+          <!-- arrow callouts overlay (svg) -->
+          <svg class="p1-arrows" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+            <!-- HEB280 arrow (left third → right side where inset will be) -->
+            <path class="p1-arrow p1-arrow--heb" d="M 290 280 Q 600 120 920 130" stroke="#c9a35a" stroke-width="2" fill="none" marker-end="url(#p1head)"/>
+            <!-- VKR arrow (bottom-left column → bottom-right text) -->
+            <path class="p1-arrow p1-arrow--vkr" d="M 110 430 Q 400 540 880 470" stroke="#c9a35a" stroke-width="2" fill="none" marker-end="url(#p1head)"/>
+            <!-- Det A arrow (right side circle → right inset) -->
+            <path class="p1-arrow p1-arrow--det" d="M 815 250 Q 880 230 940 290" stroke="#c9a35a" stroke-width="2" fill="none" marker-end="url(#p1head)"/>
+            <defs>
+              <marker id="p1head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#c9a35a"/>
+              </marker>
+            </defs>
+          </svg>
+        </div>
+        <!-- Floating insets that appear with each stage -->
+        <figure class="p1-inset p1-inset--heb" data-stage="1">
+          <img src="images/p1-bild-z-heb280.png" alt="HEB 280 — tvärsnitt"/>
+          <figcaption>HEB 280</figcaption>
         </figure>
-        <figure class="scrolly__fig" data-stage="1">
-          <img src="images/steel-plan.png" alt="Stålstomme — planritning" loading="lazy"/>
-        </figure>
-        <figure class="scrolly__fig" data-stage="2">
-          <img src="images/tekla-k2.png" alt="Konstruktionsritning K-2 — sektioner" loading="lazy"/>
-        </figure>
-        <figure class="scrolly__fig" data-stage="3">
-          <img src="images/steel-detail.png" alt="Förbandsdetalj" loading="lazy"/>
+        <div class="p1-inset p1-inset--vkr" data-stage="2">
+          <p class="p1-inset__title">Varmformade konstruktionsrör</p>
+          <ul>
+            <li>Homogen materialstruktur</li>
+            <li>Obetydliga restspänningar</li>
+            <li>Inga svetsbegränsningar i hörnen</li>
+            <li>Formstabil vid svetsning &amp; varmgalvanisering</li>
+          </ul>
+        </div>
+        <figure class="p1-inset p1-inset--det" data-stage="3">
+          <img src="images/p1-bild-x-detalj-a.png" alt="Detalj A — M12 8.8, skjuvplåt, kälsvets"/>
+          <figcaption>Detalj A · 1:10</figcaption>
         </figure>
       </div>
       <div class="scrolly__copy">
@@ -151,86 +237,31 @@
           <div class="scrolly__panel" data-stage="0">
             <p class="scrolly__tag">Tekla Structures · Konstruktion · Dimensionering</p>
             <h3 class="scrolly__title">Stålstomme för Industribyggnad.</h3>
-            <p class="scrolly__lede">Bärande stålstomme dimensionerad för 8,0&nbsp;meters spännvidder — från lastberäkning till färdig ritning.</p>
+            <p class="scrolly__lede">Bärande stålstomme dimensionerad för 8,0&nbsp;meters spännvidder — från lastberäkning till färdig konstruktionsritning i Tekla.</p>
           </div>
           <div class="scrolly__panel" data-stage="1">
-            <p class="scrolly__eyebrow">Dimensionering</p>
-            <h3 class="scrolly__heading">Profiler &amp; förband.</h3>
-            <div class="scrolly__specs">
-              <div><span class="spec__label">Takbalk</span><span class="spec__val">HEB 240</span></div>
-              <div><span class="spec__label">Bjälklagsbalk</span><span class="spec__val">HEB 280</span></div>
-              <div><span class="spec__label">Pelare</span><span class="spec__val">VKR 250×250×10</span></div>
-              <div><span class="spec__label">Förband</span><span class="spec__val">6 × M12 8.8</span></div>
-            </div>
-          </div>
-          <div class="scrolly__panel" data-stage="2">
-            <p class="scrolly__eyebrow">Verifiering</p>
-            <h3 class="scrolly__heading">Bärförmåga kontrollerad.</h3>
+            <p class="scrolly__eyebrow">HEB 280</p>
+            <h3 class="scrolly__heading">Bjälklagsbalken.</h3>
+            <p class="scrolly__body">Tvärsnittet: 280×280, fläns 18 mm, liv 10,5 mm, hörnradie 24 mm. Dimensionerad mot moment, tvärkraft och nedböjning i bruksgränstillstånd.</p>
             <div class="scrolly__check">
               <span class="check__label">Dimensioneringskontroll</span>
-              <code>M<sub>Ed</sub> ≤ M<sub>pl,Rd</sub><br>623,2&nbsp;kNm ≤ 663,9&nbsp;kNm<br>→ OK</code>
+              <code>M<sub>Ed</sub> ≤ M<sub>pl,Rd</sub><br>623,2&nbsp;kNm ≤ 663,9&nbsp;kNm → OK</code>
             </div>
           </div>
-          <div class="scrolly__panel" data-stage="3">
-            <p class="scrolly__eyebrow">Förbandsdetalj</p>
-            <h3 class="scrolly__heading">Genomtänkt val av VKR.</h3>
-            <p class="scrolly__body">6 st M12 8.8-skruvar, 10 mm plåt och kälsvets. VKR 250×10 ger homogen materialstruktur, obetydliga restspänningar, inga svetsbegränsningar i hörnen och formstabilitet vid svetsning och varmgalvanisering.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="scrolly__progress" aria-hidden="true">
-      <span class="scrolly__progress-fill"></span>
-      <span class="scrolly__progress-step" data-stage="0"></span>
-      <span class="scrolly__progress-step" data-stage="1"></span>
-      <span class="scrolly__progress-step" data-stage="2"></span>
-      <span class="scrolly__progress-step" data-stage="3"></span>
-    </div>
-  </article>
-
-  <article class="scrolly" data-stages="4" aria-label="Tvåplans Byggnad i Revit">
-    <div class="scrolly__pin">
-      <div class="scrolly__visual">
-        <figure class="scrolly__fig" data-stage="0">
-          <img src="images/revit-3d.png" alt="Revit — 3D-vy" loading="lazy"/>
-        </figure>
-        <figure class="scrolly__fig" data-stage="1">
-          <img src="images/revit-plan1.png" alt="Revit — planritning 1" loading="lazy"/>
-        </figure>
-        <figure class="scrolly__fig" data-stage="2">
-          <img src="images/revit-plan2.png" alt="Revit — planritning 2" loading="lazy"/>
-        </figure>
-        <figure class="scrolly__fig" data-stage="3">
-          <img src="images/revit-elev.png" alt="Revit — fasad / sektion" loading="lazy"/>
-        </figure>
-      </div>
-      <div class="scrolly__copy">
-        <div class="scrolly__copy-track">
-          <div class="scrolly__panel" data-stage="0">
-            <p class="scrolly__tag">Autodesk Revit · BIM · Ritningsproduktion</p>
-            <h3 class="scrolly__title">Tvåplans Byggnad i Revit.</h3>
-            <p class="scrolly__lede">Kontorsfastighet modellerad i Revit — från 3D-modell till komplett ritningsuppsättning.</p>
-          </div>
-          <div class="scrolly__panel" data-stage="1">
-            <p class="scrolly__eyebrow">Plan 1</p>
-            <h3 class="scrolly__heading">Bottenvåning.</h3>
-            <p class="scrolly__body">Måttsättning, rumsetiketter och skalor — planritningen som grunden för all redovisning.</p>
-          </div>
           <div class="scrolly__panel" data-stage="2">
-            <p class="scrolly__eyebrow">Plan 2</p>
-            <h3 class="scrolly__heading">Övre våning.</h3>
-            <p class="scrolly__body">Konsekvent grafisk redovisning genom hela ritningsuppsättningen — samma språk, samma logik.</p>
+            <p class="scrolly__eyebrow">VKR 250×10</p>
+            <h3 class="scrolly__heading">Varmformat — av en anledning.</h3>
+            <p class="scrolly__body">Pelaren är ett varmformat konstruktionsrör. Det ger materialegenskaper som kallformade rör inte når upp till.</p>
           </div>
           <div class="scrolly__panel" data-stage="3">
-            <p class="scrolly__eyebrow">Fasad &amp; sektion</p>
-            <h3 class="scrolly__heading">Volym, möte, material.</h3>
-            <p class="scrolly__body">Fasader och sektioner som binder samman planerna till en helhet — modellbaserat arbetsflöde rakt igenom.</p>
+            <p class="scrolly__eyebrow">Detalj A</p>
+            <h3 class="scrolly__heading">Förbandet i närbild.</h3>
+            <p class="scrolly__body">6 st M12 8.8-skruvar, 10 mm skjuvplåt, kälsvets mellan skjuvplåt och pelare. Genomritad i Tekla på samma 1:10-skala som ritningen visar.</p>
           </div>
         </div>
       </div>
     </div>
     <div class="scrolly__progress" aria-hidden="true">
-      <span class="scrolly__progress-fill"></span>
       <span class="scrolly__progress-step" data-stage="0"></span>
       <span class="scrolly__progress-step" data-stage="1"></span>
       <span class="scrolly__progress-step" data-stage="2"></span>
@@ -238,20 +269,46 @@
     </div>
   </article>
 
-  <article class="scrolly" data-stages="4" aria-label="Industrihall i Tekla Structures">
+  <!-- Project 2: Industrihall — 3D enter, zoom into Detail B, link to base, X-stöd lines down to a/b/c -->
+  <article class="scrolly scrolly--p2" data-stages="6" aria-label="Industrihall i Tekla Structures">
     <div class="scrolly__pin">
-      <div class="scrolly__visual">
-        <figure class="scrolly__fig" data-stage="0">
-          <img src="images/tekla-overview.png" alt="Industrihall — översikt" loading="lazy"/>
+      <div class="scrolly__visual scrolly__visual--p2">
+        <!-- Stage 0: 3D iso (Bild 1) — scales/zooms in as you scroll -->
+        <figure class="scrolly__fig p2-fig p2-fig--enter" data-stage="0">
+          <img src="images/p2-bild-1-3d.png" alt="Industrihall — 3D översikt"/>
         </figure>
-        <figure class="scrolly__fig" data-stage="1">
-          <img src="images/tekla-iso.png" alt="Industrihall — isometri" loading="lazy"/>
+        <!-- Stage 1: grundplan (Bild 2) zooming into Detail B -->
+        <figure class="scrolly__fig p2-fig p2-fig--zoom" data-stage="1">
+          <img src="images/p2-bild-2-grundplan.png" alt="Grundplan — komponenter"/>
+          <span class="p2-detb-marker" aria-hidden="true">Detalj B</span>
         </figure>
-        <figure class="scrolly__fig" data-stage="2">
-          <img src="images/tekla-detail.png" alt="Industrihall — detalj" loading="lazy"/>
+        <!-- Stage 2: detaljer A B C (Bild 3) — Detalj B highlighted -->
+        <figure class="scrolly__fig p2-fig p2-fig--abc" data-stage="2">
+          <img src="images/p2-bild-3-detaljer-abc.png" alt="Detalj A, B, C"/>
+          <span class="p2-detb-highlight" aria-hidden="true"></span>
         </figure>
-        <figure class="scrolly__fig" data-stage="3">
-          <img src="images/steel-extra.png" alt="Konstruktionsdetalj" loading="lazy"/>
+        <!-- Stage 3: 3D base (Bild 4) — connected to detail B -->
+        <figure class="scrolly__fig p2-fig" data-stage="3">
+          <img src="images/p2-bild-4-base.png" alt="Detalj B — grundläggning i 3D"/>
+        </figure>
+        <!-- Stage 4: elevations with X-stöd (Bild 5) -->
+        <figure class="scrolly__fig p2-fig" data-stage="4">
+          <img src="images/p2-bild-5-elevations.png" alt="Elevationer med X-stöd"/>
+        </figure>
+        <!-- Stage 5: 3D + connection plate / gusset plate close-ups (Bild 6 + a/b/c) -->
+        <figure class="scrolly__fig p2-fig p2-fig--xstod" data-stage="5">
+          <div class="p2-xstod">
+            <img class="p2-xstod__top" src="images/p2-bild-6-tekla-3d.png" alt="3D-stomme med detaljer"/>
+            <svg class="p2-xstod__lines" viewBox="0 0 1000 800" preserveAspectRatio="none" aria-hidden="true">
+              <path class="p2-xline p2-xline--1" d="M 280 250 Q 220 420 250 580" stroke="#c9a35a" stroke-width="2" fill="none"/>
+              <path class="p2-xline p2-xline--2" d="M 360 270 Q 460 440 500 580" stroke="#c9a35a" stroke-width="2" fill="none"/>
+            </svg>
+            <div class="p2-xstod__abc">
+              <figure class="p2-abc"><img src="images/p2-bild-a-connection.png" alt="Bild a — Connection plate"/><figcaption>Connection plate</figcaption></figure>
+              <figure class="p2-abc"><img src="images/p2-bild-b-connection-plate.png" alt="Bild b — Connection plate i snitt"/><figcaption>Connection plate · snitt</figcaption></figure>
+              <figure class="p2-abc"><img src="images/p2-bild-c-gusset.png" alt="Bild c — Gusset plate"/><figcaption>Gusset plate</figcaption></figure>
+            </div>
+          </div>
         </figure>
       </div>
       <div class="scrolly__copy">
@@ -259,28 +316,105 @@
           <div class="scrolly__panel" data-stage="0">
             <p class="scrolly__tag">Tekla Structures · GA-ritningar · Detaljer</p>
             <h3 class="scrolly__title">Industrihall i Tekla.</h3>
-            <p class="scrolly__lede">GA-ritningar, planer, sektioner och konstruktionsdetaljer — en komplett ritningsuppsättning från en 3D-modell.</p>
+            <p class="scrolly__lede">GA-ritningar, planer, sektioner och konstruktionsdetaljer — en komplett ritningsuppsättning från en 3D-modell. Kliv in i byggnaden.</p>
           </div>
           <div class="scrolly__panel" data-stage="1">
-            <p class="scrolly__eyebrow">Stomme</p>
-            <h3 class="scrolly__heading">Stomlinjer, pelare, balkar.</h3>
-            <p class="scrolly__body">Den primära konstruktionen — strukturen som allt annat hänger på. Tydlig redovisning av geometri och dimensioner.</p>
+            <p class="scrolly__eyebrow">Grundplan</p>
+            <h3 class="scrolly__heading">Komponenter på plats.</h3>
+            <p class="scrolly__body">Alla pelarfundament redovisade. Zooma in mot Detalj B — den i mitten.</p>
           </div>
           <div class="scrolly__panel" data-stage="2">
-            <p class="scrolly__eyebrow">Detalj</p>
-            <h3 class="scrolly__heading">Anslutning &amp; stagning.</h3>
-            <p class="scrolly__body">Där komponenterna möts — anslutningsdetaljer som måste fungera både konstruktivt och i produktion.</p>
+            <p class="scrolly__eyebrow">Detalj A · B · C</p>
+            <h3 class="scrolly__heading">Tre fundament — tre lösningar.</h3>
+            <p class="scrolly__body">Komponent 1042, samtliga pelare. Detalj B är central pelare på pelarfundament 1800×1800, P/1 VKR 200×6,3.</p>
           </div>
           <div class="scrolly__panel" data-stage="3">
-            <p class="scrolly__eyebrow">Konstruktionsdetalj</p>
-            <h3 class="scrolly__heading">Från modell till verkstad.</h3>
-            <p class="scrolly__body">Detaljerad redovisning av en enskild komponent — det hantverk som gör en ritning byggbar.</p>
+            <p class="scrolly__eyebrow">Detalj B i 3D</p>
+            <h3 class="scrolly__heading">Samma fundament — i modellen.</h3>
+            <p class="scrolly__body">Pelarfundament som ritningen visar, fast nu i 3D. Förankringsskruvar, plintens armering och underlagsplåt.</p>
+          </div>
+          <div class="scrolly__panel" data-stage="4">
+            <p class="scrolly__eyebrow">Elevationer</p>
+            <h3 class="scrolly__heading">Stagning i fasaden.</h3>
+            <p class="scrolly__body">X-stöden bär de horisontella lasterna. Tre elevationer redovisade — vart strävorna sitter och vad de möter.</p>
+          </div>
+          <div class="scrolly__panel" data-stage="5">
+            <p class="scrolly__eyebrow">Anslutningar</p>
+            <h3 class="scrolly__heading">Connection plate &amp; gusset plate.</h3>
+            <p class="scrolly__body">Där X-stöden möter pelaren — en gusset plate som tar upp dragstången, och en connection plate som ankrar mot pelarfoten.</p>
           </div>
         </div>
       </div>
     </div>
     <div class="scrolly__progress" aria-hidden="true">
-      <span class="scrolly__progress-fill"></span>
+      <span class="scrolly__progress-step" data-stage="0"></span>
+      <span class="scrolly__progress-step" data-stage="1"></span>
+      <span class="scrolly__progress-step" data-stage="2"></span>
+      <span class="scrolly__progress-step" data-stage="3"></span>
+      <span class="scrolly__progress-step" data-stage="4"></span>
+      <span class="scrolly__progress-step" data-stage="5"></span>
+    </div>
+  </article>
+
+  <!-- Project 3: Tvåplans Byggnad — 3D rotates, plans draw on, sektion with side dimensions -->
+  <article class="scrolly scrolly--p3" data-stages="4" aria-label="Tvåplans Byggnad i Revit">
+    <div class="scrolly__pin">
+      <div class="scrolly__visual scrolly__visual--p3">
+        <!-- Stage 0: rotating 3D house (Bild d) -->
+        <figure class="scrolly__fig p3-fig p3-fig--rotate" data-stage="0">
+          <img class="p3-rotate__img" src="images/p3-bild-d-3d.png" alt="Tvåplans byggnad — 3D"/>
+        </figure>
+        <!-- Stage 1: Plan 1 drawn (Bild e) -->
+        <figure class="scrolly__fig p3-fig p3-fig--draw" data-stage="1">
+          <img src="images/p3-bild-e-plan1.png" alt="Plan 1"/>
+          <span class="p3-wipe" aria-hidden="true"></span>
+        </figure>
+        <!-- Stage 2: Plan 2 drawn (Bild f) -->
+        <figure class="scrolly__fig p3-fig p3-fig--draw" data-stage="2">
+          <img src="images/p3-bild-f-plan2.png" alt="Plan 2"/>
+          <span class="p3-wipe" aria-hidden="true"></span>
+        </figure>
+        <!-- Stage 3: Sektion (Bild g) with dimension labels at the side -->
+        <figure class="scrolly__fig p3-fig p3-fig--sektion" data-stage="3">
+          <div class="p3-sektion">
+            <img src="images/p3-bild-g-sektion.png" alt="A och B sektion"/>
+            <ul class="p3-dims" aria-hidden="true">
+              <li><span>Nockhöjd</span><b>7&nbsp;530&nbsp;mm</b></li>
+              <li><span>Takvinkel</span><b>~28°</b></li>
+              <li><span>Våningshöjd 1</span><b>2&nbsp;700&nbsp;mm</b></li>
+              <li><span>Bjälklag</span><b>300&nbsp;mm</b></li>
+              <li><span>Våningshöjd 2</span><b>2&nbsp;700&nbsp;mm</b></li>
+              <li><span>Dörr</span><b>2&nbsp;100&nbsp;mm</b></li>
+            </ul>
+          </div>
+        </figure>
+      </div>
+      <div class="scrolly__copy">
+        <div class="scrolly__copy-track">
+          <div class="scrolly__panel" data-stage="0">
+            <p class="scrolly__tag">Autodesk Revit · BIM · Ritningsproduktion</p>
+            <h3 class="scrolly__title">Tvåplans byggnad — kontorsfastighet.</h3>
+            <p class="scrolly__lede">Kontorsfastighet modellerad i Revit — från 3D-modell till komplett ritningsuppsättning. Gå runt.</p>
+          </div>
+          <div class="scrolly__panel" data-stage="1">
+            <p class="scrolly__eyebrow">Plan 1</p>
+            <h3 class="scrolly__heading">Bottenvåning ritas upp.</h3>
+            <p class="scrolly__body">Vardagsrum, matrum, kök, hall och tvätt. Måttsatt, rumsetiketter och dörrnumrering — ritningen som ligger till grund för allt annat.</p>
+          </div>
+          <div class="scrolly__panel" data-stage="2">
+            <p class="scrolly__eyebrow">Plan 2</p>
+            <h3 class="scrolly__heading">Övre våning ritas upp.</h3>
+            <p class="scrolly__body">Tre sovrum, allrum, klädkammare och bad. Spiraltrappa upp från entréplanet. Samma grafiska språk som Plan 1.</p>
+          </div>
+          <div class="scrolly__panel" data-stage="3">
+            <p class="scrolly__eyebrow">A &amp; B Sektion</p>
+            <h3 class="scrolly__heading">Mått, möte, höjder.</h3>
+            <p class="scrolly__body">Två sektioner genom byggnaden — bredd, höjd, takvinkel. Allt verifierat mot modellen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scrolly__progress" aria-hidden="true">
       <span class="scrolly__progress-step" data-stage="0"></span>
       <span class="scrolly__progress-step" data-stage="1"></span>
       <span class="scrolly__progress-step" data-stage="2"></span>
@@ -290,6 +424,26 @@
 </section>
 
 <section class="section interests" id="interests">
+  <!-- Layered greenery for sustainability emphasis -->
+  <div class="interests__greenery" aria-hidden="true">
+    <svg class="leaf leaf--1" viewBox="0 0 100 100"><path d="M 50 95 C 12 80 8 38 50 6 C 92 38 88 80 50 95 Z M 50 95 L 50 30" fill="#4f7a4a" opacity="0.9"/></svg>
+    <svg class="leaf leaf--2" viewBox="0 0 100 100"><path d="M 50 95 C 12 80 8 38 50 6 C 92 38 88 80 50 95 Z M 50 95 L 50 30" fill="#5a8b54" opacity="0.85"/></svg>
+    <svg class="leaf leaf--3" viewBox="0 0 100 100"><path d="M 50 95 C 12 80 8 38 50 6 C 92 38 88 80 50 95 Z M 50 95 L 50 30" fill="#3e6240" opacity="0.95"/></svg>
+    <svg class="leaf leaf--4" viewBox="0 0 100 100"><path d="M 50 95 C 12 80 8 38 50 6 C 92 38 88 80 50 95 Z M 50 95 L 50 30" fill="#6b9a64" opacity="0.8"/></svg>
+    <svg class="vine vine--1" viewBox="0 0 200 600" preserveAspectRatio="none">
+      <path d="M 100 0 C 60 80 140 160 100 240 C 60 320 140 400 100 480 C 60 560 100 600 100 600" stroke="#4f7a4a" stroke-width="1.5" fill="none" opacity="0.7"/>
+      <circle cx="60" cy="120" r="8" fill="#5a8b54" opacity="0.8"/>
+      <circle cx="140" cy="200" r="6" fill="#6b9a64" opacity="0.7"/>
+      <circle cx="60" cy="320" r="9" fill="#4f7a4a" opacity="0.8"/>
+      <circle cx="140" cy="440" r="7" fill="#5a8b54" opacity="0.75"/>
+    </svg>
+    <svg class="vine vine--2" viewBox="0 0 200 600" preserveAspectRatio="none">
+      <path d="M 100 0 C 140 80 60 160 100 240 C 140 320 60 400 100 480 C 140 560 100 600 100 600" stroke="#3e6240" stroke-width="1.5" fill="none" opacity="0.7"/>
+      <circle cx="140" cy="100" r="7" fill="#6b9a64" opacity="0.8"/>
+      <circle cx="60" cy="220" r="9" fill="#4f7a4a" opacity="0.75"/>
+      <circle cx="140" cy="380" r="6" fill="#5a8b54" opacity="0.8"/>
+    </svg>
+  </div>
   <div class="container">
     <h2 class="section__title reveal-up">Intressen</h2>
     <div class="interests__grid">
@@ -341,6 +495,6 @@
   <img class="lightbox__img" alt="" />
 </div>
 
-<script src="script.js?v=4"></script>
+<script src="script.js?v=5"></script>
 </body>
 </html>
