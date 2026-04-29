@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=3" />
+<link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
 
@@ -125,75 +125,168 @@
 </section>
 
 <section class="section projects" id="projects">
-  <div class="container">
+  <div class="container projects__intro">
     <h2 class="section__title reveal-up">Projekt</h2>
-
-    <article class="project">
-      <div class="project__head reveal-up">
-        <p class="project__tag">Tekla Structures · Konstruktion · Dimensionering</p>
-        <h3 class="project__title">Stålstomme för Industribyggnad</h3>
-      </div>
-      <div class="project__body">
-        <p class="project__desc" data-words>I detta projekt dimensionerades en bärande stålstomme för en industribyggnad med 8,0&nbsp;meters spännvidder. Arbetet omfattade lastberäkningar, dimensionering av takbalkar, bjälklagsbalkar, pelare och förband samt framtagning av konstruktionsritningar i Tekla Structures.</p>
-        <div class="project__specs slide-in-left">
-          <div><span class="spec__label">Takbalk</span><span class="spec__val">HEB 240</span></div>
-          <div><span class="spec__label">Bjälklagsbalk</span><span class="spec__val">HEB 280</span></div>
-          <div><span class="spec__label">Pelare</span><span class="spec__val">VKR 250×250×10</span></div>
-          <div><span class="spec__label">Förband</span><span class="spec__val">6 × M12 8.8</span></div>
-        </div>
-        <div class="project__check slide-in-right">
-          <span class="check__label">Dimensioneringskontroll</span>
-          <code>M<sub>Ed</sub> ≤ M<sub>pl,Rd</sub> &nbsp;→&nbsp; 623,2&nbsp;kNm ≤ 663,9&nbsp;kNm &nbsp;→&nbsp; OK</code>
-        </div>
-        <p class="project__note" data-words>Förbandets utformning: 6 st M12 8.8-skruvar, 10 mm plåt och kälsvets. VKR 250×10 ger homogen materialstruktur, obetydliga restspänningar, inga svetsbegränsningar i hörnen samt formstabilitet vid svetsning och varmgalvanisering.</p>
-      </div>
-      <div class="project__media project__media--2col">
-        <figure class="slide-in-left"><img src="images/steel-iso.png" alt="Stålstomme — isometri" loading="lazy"/></figure>
-        <figure class="slide-in-right"><img src="images/steel-plan.png" alt="Stålstomme — planritning" loading="lazy"/></figure>
-        <figure class="span-2 slide-in-left"><img src="images/tekla-k2.png" alt="Konstruktionsritning K-2 — sektioner" loading="lazy"/></figure>
-        <figure class="slide-in-left"><img src="images/tekla-k3.png" alt="Konstruktionsritning K-3" loading="lazy"/></figure>
-        <figure class="slide-in-right"><img src="images/steel-detail.png" alt="Förbandsdetalj" loading="lazy"/></figure>
-      </div>
-    </article>
-
-    <article class="project">
-      <div class="project__head reveal-up">
-        <p class="project__tag">Autodesk Revit · BIM · Ritningsproduktion</p>
-        <h3 class="project__title">Tvåplans Byggnad i Revit</h3>
-      </div>
-      <div class="project__body">
-        <p class="project__desc" data-words>I detta projekt modellerades en kontorsfastighet i Revit med fokus på arkitektonisk ritningsproduktion. Arbetet omfattade planritningar för två våningsplan, sektioner, fasader och utvändig 3D-vy. Projektet tränade arbetsflödet från modellering till färdig ritningslayout med måttsättning, rumsetiketter, skalor och grafisk redovisning.</p>
-        <div class="project__specs slide-in-right">
-          <div><span class="spec__label">Program</span><span class="spec__val">Revit</span></div>
-          <div><span class="spec__label">Typ</span><span class="spec__val">Tvåplansbyggnad</span></div>
-          <div><span class="spec__label">Ritningar</span><span class="spec__val">Plan, sektion, fasad, 3D</span></div>
-          <div><span class="spec__label">Fokus</span><span class="spec__val">Modellering &amp; layout</span></div>
-        </div>
-      </div>
-      <div class="project__media project__media--2col">
-        <figure class="span-2 slide-in-right"><img src="images/revit-3d.png" alt="Revit — 3D-vy" loading="lazy"/></figure>
-        <figure class="slide-in-left"><img src="images/revit-plan1.png" alt="Revit — planritning 1" loading="lazy"/></figure>
-        <figure class="slide-in-right"><img src="images/revit-plan2.png" alt="Revit — planritning 2" loading="lazy"/></figure>
-        <figure class="span-2 slide-in-left"><img src="images/revit-elev.png" alt="Revit — fasad / sektion" loading="lazy"/></figure>
-      </div>
-    </article>
-
-    <article class="project">
-      <div class="project__head reveal-up">
-        <p class="project__tag">Tekla Structures · GA-ritningar · Konstruktionsdetaljer</p>
-        <h3 class="project__title">Industrihall — Tekla Structures</h3>
-      </div>
-      <div class="project__body">
-        <p class="project__desc" data-words>I detta projekt modellerades och redovisades en industrihall i Tekla Structures. Arbetet omfattade framtagning av GA-ritningar, 3D-vy, grundplan, entresolplan, takplan, elevationer, sektioner och konstruktionsdetaljer. Fokus låg på att skapa en tydlig ritningsuppsättning med stomlinjer, pelare, balkar, grundläggning, stagning och anslutningsdetaljer. Projektet tränade arbetsflödet från 3D-modell till färdiga konstruktionsritningar.</p>
-      </div>
-      <div class="project__media project__media--2col">
-        <figure class="span-2 slide-in-left"><img src="images/tekla-overview.png" alt="Industrihall — översikt" loading="lazy"/></figure>
-        <figure class="slide-in-left"><img src="images/tekla-iso.png" alt="Industrihall — isometri" loading="lazy"/></figure>
-        <figure class="slide-in-right"><img src="images/tekla-detail.png" alt="Industrihall — detalj" loading="lazy"/></figure>
-        <figure class="span-2 slide-in-right"><img src="images/steel-extra.png" alt="Konstruktionsdetalj" loading="lazy"/></figure>
-      </div>
-    </article>
+    <p class="projects__lede reveal-up">Tre arbeten i Tekla och Revit. Scrolla — bilden står still medan berättelsen rör sig.</p>
   </div>
+
+  <article class="scrolly" data-stages="4" aria-label="Stålstomme för Industribyggnad">
+    <div class="scrolly__pin">
+      <div class="scrolly__visual">
+        <figure class="scrolly__fig" data-stage="0">
+          <img src="images/steel-iso.png" alt="Stålstomme — isometri" loading="lazy"/>
+        </figure>
+        <figure class="scrolly__fig" data-stage="1">
+          <img src="images/steel-plan.png" alt="Stålstomme — planritning" loading="lazy"/>
+        </figure>
+        <figure class="scrolly__fig" data-stage="2">
+          <img src="images/tekla-k2.png" alt="Konstruktionsritning K-2 — sektioner" loading="lazy"/>
+        </figure>
+        <figure class="scrolly__fig" data-stage="3">
+          <img src="images/steel-detail.png" alt="Förbandsdetalj" loading="lazy"/>
+        </figure>
+      </div>
+      <div class="scrolly__copy">
+        <div class="scrolly__copy-track">
+          <div class="scrolly__panel" data-stage="0">
+            <p class="scrolly__tag">Tekla Structures · Konstruktion · Dimensionering</p>
+            <h3 class="scrolly__title">Stålstomme för Industribyggnad.</h3>
+            <p class="scrolly__lede">Bärande stålstomme dimensionerad för 8,0&nbsp;meters spännvidder — från lastberäkning till färdig ritning.</p>
+          </div>
+          <div class="scrolly__panel" data-stage="1">
+            <p class="scrolly__eyebrow">Dimensionering</p>
+            <h3 class="scrolly__heading">Profiler &amp; förband.</h3>
+            <div class="scrolly__specs">
+              <div><span class="spec__label">Takbalk</span><span class="spec__val">HEB 240</span></div>
+              <div><span class="spec__label">Bjälklagsbalk</span><span class="spec__val">HEB 280</span></div>
+              <div><span class="spec__label">Pelare</span><span class="spec__val">VKR 250×250×10</span></div>
+              <div><span class="spec__label">Förband</span><span class="spec__val">6 × M12 8.8</span></div>
+            </div>
+          </div>
+          <div class="scrolly__panel" data-stage="2">
+            <p class="scrolly__eyebrow">Verifiering</p>
+            <h3 class="scrolly__heading">Bärförmåga kontrollerad.</h3>
+            <div class="scrolly__check">
+              <span class="check__label">Dimensioneringskontroll</span>
+              <code>M<sub>Ed</sub> ≤ M<sub>pl,Rd</sub><br>623,2&nbsp;kNm ≤ 663,9&nbsp;kNm<br>→ OK</code>
+            </div>
+          </div>
+          <div class="scrolly__panel" data-stage="3">
+            <p class="scrolly__eyebrow">Förbandsdetalj</p>
+            <h3 class="scrolly__heading">Genomtänkt val av VKR.</h3>
+            <p class="scrolly__body">6 st M12 8.8-skruvar, 10 mm plåt och kälsvets. VKR 250×10 ger homogen materialstruktur, obetydliga restspänningar, inga svetsbegränsningar i hörnen och formstabilitet vid svetsning och varmgalvanisering.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scrolly__progress" aria-hidden="true">
+      <span class="scrolly__progress-fill"></span>
+      <span class="scrolly__progress-step" data-stage="0"></span>
+      <span class="scrolly__progress-step" data-stage="1"></span>
+      <span class="scrolly__progress-step" data-stage="2"></span>
+      <span class="scrolly__progress-step" data-stage="3"></span>
+    </div>
+  </article>
+
+  <article class="scrolly" data-stages="4" aria-label="Tvåplans Byggnad i Revit">
+    <div class="scrolly__pin">
+      <div class="scrolly__visual">
+        <figure class="scrolly__fig" data-stage="0">
+          <img src="images/revit-3d.png" alt="Revit — 3D-vy" loading="lazy"/>
+        </figure>
+        <figure class="scrolly__fig" data-stage="1">
+          <img src="images/revit-plan1.png" alt="Revit — planritning 1" loading="lazy"/>
+        </figure>
+        <figure class="scrolly__fig" data-stage="2">
+          <img src="images/revit-plan2.png" alt="Revit — planritning 2" loading="lazy"/>
+        </figure>
+        <figure class="scrolly__fig" data-stage="3">
+          <img src="images/revit-elev.png" alt="Revit — fasad / sektion" loading="lazy"/>
+        </figure>
+      </div>
+      <div class="scrolly__copy">
+        <div class="scrolly__copy-track">
+          <div class="scrolly__panel" data-stage="0">
+            <p class="scrolly__tag">Autodesk Revit · BIM · Ritningsproduktion</p>
+            <h3 class="scrolly__title">Tvåplans Byggnad i Revit.</h3>
+            <p class="scrolly__lede">Kontorsfastighet modellerad i Revit — från 3D-modell till komplett ritningsuppsättning.</p>
+          </div>
+          <div class="scrolly__panel" data-stage="1">
+            <p class="scrolly__eyebrow">Plan 1</p>
+            <h3 class="scrolly__heading">Bottenvåning.</h3>
+            <p class="scrolly__body">Måttsättning, rumsetiketter och skalor — planritningen som grunden för all redovisning.</p>
+          </div>
+          <div class="scrolly__panel" data-stage="2">
+            <p class="scrolly__eyebrow">Plan 2</p>
+            <h3 class="scrolly__heading">Övre våning.</h3>
+            <p class="scrolly__body">Konsekvent grafisk redovisning genom hela ritningsuppsättningen — samma språk, samma logik.</p>
+          </div>
+          <div class="scrolly__panel" data-stage="3">
+            <p class="scrolly__eyebrow">Fasad &amp; sektion</p>
+            <h3 class="scrolly__heading">Volym, möte, material.</h3>
+            <p class="scrolly__body">Fasader och sektioner som binder samman planerna till en helhet — modellbaserat arbetsflöde rakt igenom.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scrolly__progress" aria-hidden="true">
+      <span class="scrolly__progress-fill"></span>
+      <span class="scrolly__progress-step" data-stage="0"></span>
+      <span class="scrolly__progress-step" data-stage="1"></span>
+      <span class="scrolly__progress-step" data-stage="2"></span>
+      <span class="scrolly__progress-step" data-stage="3"></span>
+    </div>
+  </article>
+
+  <article class="scrolly" data-stages="4" aria-label="Industrihall i Tekla Structures">
+    <div class="scrolly__pin">
+      <div class="scrolly__visual">
+        <figure class="scrolly__fig" data-stage="0">
+          <img src="images/tekla-overview.png" alt="Industrihall — översikt" loading="lazy"/>
+        </figure>
+        <figure class="scrolly__fig" data-stage="1">
+          <img src="images/tekla-iso.png" alt="Industrihall — isometri" loading="lazy"/>
+        </figure>
+        <figure class="scrolly__fig" data-stage="2">
+          <img src="images/tekla-detail.png" alt="Industrihall — detalj" loading="lazy"/>
+        </figure>
+        <figure class="scrolly__fig" data-stage="3">
+          <img src="images/steel-extra.png" alt="Konstruktionsdetalj" loading="lazy"/>
+        </figure>
+      </div>
+      <div class="scrolly__copy">
+        <div class="scrolly__copy-track">
+          <div class="scrolly__panel" data-stage="0">
+            <p class="scrolly__tag">Tekla Structures · GA-ritningar · Detaljer</p>
+            <h3 class="scrolly__title">Industrihall i Tekla.</h3>
+            <p class="scrolly__lede">GA-ritningar, planer, sektioner och konstruktionsdetaljer — en komplett ritningsuppsättning från en 3D-modell.</p>
+          </div>
+          <div class="scrolly__panel" data-stage="1">
+            <p class="scrolly__eyebrow">Stomme</p>
+            <h3 class="scrolly__heading">Stomlinjer, pelare, balkar.</h3>
+            <p class="scrolly__body">Den primära konstruktionen — strukturen som allt annat hänger på. Tydlig redovisning av geometri och dimensioner.</p>
+          </div>
+          <div class="scrolly__panel" data-stage="2">
+            <p class="scrolly__eyebrow">Detalj</p>
+            <h3 class="scrolly__heading">Anslutning &amp; stagning.</h3>
+            <p class="scrolly__body">Där komponenterna möts — anslutningsdetaljer som måste fungera både konstruktivt och i produktion.</p>
+          </div>
+          <div class="scrolly__panel" data-stage="3">
+            <p class="scrolly__eyebrow">Konstruktionsdetalj</p>
+            <h3 class="scrolly__heading">Från modell till verkstad.</h3>
+            <p class="scrolly__body">Detaljerad redovisning av en enskild komponent — det hantverk som gör en ritning byggbar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scrolly__progress" aria-hidden="true">
+      <span class="scrolly__progress-fill"></span>
+      <span class="scrolly__progress-step" data-stage="0"></span>
+      <span class="scrolly__progress-step" data-stage="1"></span>
+      <span class="scrolly__progress-step" data-stage="2"></span>
+      <span class="scrolly__progress-step" data-stage="3"></span>
+    </div>
+  </article>
 </section>
 
 <section class="section interests" id="interests">
@@ -248,6 +341,6 @@
   <img class="lightbox__img" alt="" />
 </div>
 
-<script src="script.js?v=3"></script>
+<script src="script.js?v=4"></script>
 </body>
 </html>

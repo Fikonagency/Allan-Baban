@@ -104,10 +104,11 @@
     document.body.style.overflow = '';
     setTimeout(() => { lightboxImg.src = ''; }, 300);
   };
-  document.querySelectorAll('.project__media figure').forEach((fig) => {
+  document.querySelectorAll('.scrolly__fig, .project__media figure').forEach((fig) => {
     fig.setAttribute('tabindex', '0');
     fig.setAttribute('role', 'button');
     const img = fig.querySelector('img');
+    if (!img) return;
     const trigger = () => open(img.src, img.alt);
     fig.addEventListener('click', trigger);
     fig.addEventListener('keydown', (e) => {
@@ -136,5 +137,61 @@
         }
       }, { passive: true });
     }
+  }
+
+  // === Apple-style scrollytelling for projects ===
+  const scrollies = Array.from(document.querySelectorAll('.scrolly'));
+  scrollies.forEach((sc) => {
+    const stages = parseInt(sc.dataset.stages || '4', 10);
+    sc.style.setProperty('--stages', stages);
+    // Set first stage active immediately so something paints before scroll
+    const firstFig = sc.querySelector('.scrolly__fig[data-stage="0"]');
+    const firstPanel = sc.querySelector('.scrolly__panel[data-stage="0"]');
+    const firstStep = sc.querySelector('.scrolly__progress-step[data-stage="0"]');
+    if (firstFig) firstFig.classList.add('is-active');
+    if (firstPanel) firstPanel.classList.add('is-active');
+    if (firstStep) firstStep.classList.add('is-active');
+  });
+
+  if (!reduced && scrollies.length) {
+    let scTicking = false;
+    const updateScrollies = () => {
+      const vh = window.innerHeight;
+      scrollies.forEach((sc) => {
+        const rect = sc.getBoundingClientRect();
+        const total = sc.offsetHeight - vh;
+        if (total <= 0) return;
+        // progress 0..1 across the entire scrolly's scroll range
+        const raw = -rect.top / total;
+        const progress = Math.max(0, Math.min(0.9999, raw));
+        const stages = parseInt(sc.dataset.stages || '4', 10);
+        const idx = Math.min(stages - 1, Math.floor(progress * stages));
+
+        const figs = sc.querySelectorAll('.scrolly__fig');
+        const panels = sc.querySelectorAll('.scrolly__panel');
+        const steps = sc.querySelectorAll('.scrolly__progress-step');
+
+        const apply = (nodes) => {
+          nodes.forEach((n, i) => {
+            n.classList.toggle('is-active', i === idx);
+            n.classList.toggle('is-past', i < idx);
+          });
+        };
+        apply(figs);
+        apply(panels);
+        apply(steps);
+      });
+      scTicking = false;
+    };
+    document.addEventListener('scroll', () => {
+      if (!scTicking) { requestAnimationFrame(updateScrollies); scTicking = true; }
+    }, { passive: true });
+    window.addEventListener('resize', updateScrollies);
+    updateScrollies();
+  } else if (reduced) {
+    // Show every panel/figure stacked when motion is reduced
+    scrollies.forEach((sc) => {
+      sc.querySelectorAll('.scrolly__fig, .scrolly__panel').forEach((n) => n.classList.add('is-active'));
+    });
   }
 })();
